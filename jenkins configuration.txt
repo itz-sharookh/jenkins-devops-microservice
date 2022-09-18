@@ -1,0 +1,21 @@
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume jenkins-docker-certs:/certs/client:ro ^
+  --publish 8081:8080 --publish 50000:50000 myjenkins-blueocean:2.361.1-1
+  
+  docker exec -t -i 6bdd1364af80 /var/jenkins_home/secrets/initialAdminPassword
+  
+  docker exec -it 6bdd1364af80 bash
+  
+  git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/itz-sharookh/jenkins-devops-microservice.git
+git push -u origin main
+
+
+
+username : admin
+password:  admin
+  
